@@ -6,9 +6,9 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
  */
 
 class PartialView
-        extends RelativeLayout {
+        extends FrameLayout {
 
     private ImageView mFilledView;
     private ImageView mEmptyView;
@@ -54,10 +54,10 @@ class PartialView
                 LayoutParams.WRAP_CONTENT,
                 1f));
 
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+        LayoutParams params = new LayoutParams(
                 mStarWidth == 0 ? LayoutParams.WRAP_CONTENT : mStarWidth,
                 mStarHeight == 0 ? LayoutParams.WRAP_CONTENT : mStarHeight);
-        params.addRule(CENTER_IN_PARENT);
+        params.gravity = Gravity.CENTER;
 
         mFilledView = new ImageView(getContext());
         mFilledView.setScaleType(ImageView.ScaleType.CENTER_CROP);
